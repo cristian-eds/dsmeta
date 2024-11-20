@@ -21,6 +21,7 @@ public class SecurityConfig {
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		 http
 		 	.csrf(csrf -> csrf.disable()) // Avalie a necessidade de desabilitar o CSRF
+		 	.headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()))
 	        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 	        .authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
 
