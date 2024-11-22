@@ -20,9 +20,16 @@ public class SecurityConfig {
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		 http
 		 	.csrf(csrf -> csrf.disable()) // Avalie a necessidade de desabilitar o CSRF
-		 	.headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()))
+		 	.headers(headers -> headers.frameOptions(frame -> frame.disable()))
 	        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-	        .authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
+	        .authorizeHttpRequests(auth -> auth.anyRequest().permitAll())
+	        .cors(cors -> cors.configurationSource(request -> {
+	        	CorsConfiguration corsConfig = new CorsConfiguration();
+	        	corsConfig.setAllowedOrigins(Arrays.asList("http://localhost:5173"));
+	        	corsConfig.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
+	        	corsConfig.addAllowedHeader("*");
+	            return corsConfig;
+	        }));
 
 		return http.build();
 	}
