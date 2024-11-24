@@ -7,12 +7,12 @@ import java.time.ZoneId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import com.cristian.eds.dsmeta.entities.Sale;
 import com.cristian.eds.dsmeta.repositories.SaleRepository;
 
-@Service
+@Component
 public class SaleService {
 	
 	@Autowired
