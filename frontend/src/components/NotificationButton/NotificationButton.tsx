@@ -14,6 +14,7 @@ const NotificationButton = ({saleId}: Props) => {
     const handleClick = (id : number) => {
         axios(`${BASE_URL}/sales/${id}/notification`)
         .then(res => {
+            console.log(res);
             toast.info("SMS enviado com sucesso!");
         })
     }
