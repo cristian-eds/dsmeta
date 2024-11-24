@@ -25,7 +25,7 @@ public class SecurityConfig {
 	        .authorizeHttpRequests(auth -> auth.anyRequest().permitAll())
 	        .cors(cors -> cors.configurationSource(request -> {
 	        	CorsConfiguration corsConfig = new CorsConfiguration();
-	        	corsConfig.setAllowedOrigins(Arrays.asList("http://localhost:5173"));
+	        	corsConfig.setAllowedOrigins(Arrays.asList("http://localhost:5173", "https://deft-duckanoo-0f4465.netlify.app"));
 	        	corsConfig.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
 	        	corsConfig.addAllowedHeader("*");
 	            return corsConfig;
